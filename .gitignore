@@ -2,5 +2,6 @@ app/protected/tests/logs/
 app/protected/tests/coverage/
 app/protected/runtime/*.*
 app/assets/*.*
+build/logs/*.*
 .DS_Store
 .idea/
