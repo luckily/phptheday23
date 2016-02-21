@@ -21,7 +21,7 @@ class ProductTest extends CDbTestCase
 
         $expected = array(
             'name' => 'Sony Xperia Z1 C6902 3G',
-            'type' => Product::CATEGORY_PHONE,
+            'category' => Product::CATEGORY_PHONE,
             'status' => Product::ONLINE,
         );
 
@@ -32,7 +32,7 @@ class ProductTest extends CDbTestCase
         // Assert 使用PHPUnit提供的assertion，測試期望值與實際值是否相等。
         $this->assertTrue($isSave);
         $this->assertEquals($expected['status'], $product->status);
-        $this->assertEquals($expected['type'], $product->type);
+        $this->assertEquals($expected['category'], $product->category);
         $this->assertEquals($expected['name'], $product->name);
     }
 
@@ -62,7 +62,7 @@ class ProductTest extends CDbTestCase
         $this->assertEquals($expected, $targetProduct->getStatusText());
     }
 
-    public function test_get_type_text()
+    public function test_get_category_text()
     {
         // 3A
         // Arrange 建立相關測試物件。
@@ -76,9 +76,9 @@ class ProductTest extends CDbTestCase
         }
 
         $targetProduct = Product::model()->find(array(
-            'condition' => 'type = :type',
+            'condition' => 'category = :category',
             'params' => array(
-                ':type' => Product::CATEGORY_PAD
+                ':category' => Product::CATEGORY_PAD
             ),
         ));
 

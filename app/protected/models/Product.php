@@ -105,18 +105,22 @@ class Product extends CActiveRecord
 
 	public function getCategoryText()
 	{
-		if($this->status == self::CATEGORY_PHONE)
+		if($this->category == self::CATEGORY_PHONE)
 			return '手機';
 
-		if($this->status == self::CATEGORY_PAD)
+		if($this->category == self::CATEGORY_PAD)
 			return '平板';
 
-		if($this->status == self::CATEGORY_NOTEBOOK)
+		if($this->category == self::CATEGORY_NOTEBOOK)
 			return '筆電';
 
 		throw new Exception('undefined this product category.');
 	}
 
+	/**
+	 * 半價，無條件捨去
+	 * @return int
+	 */
 	public function getHalfPrice()
 	{
 		return floor($this->price * 0.5);
