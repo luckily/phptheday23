@@ -1,0 +1,5 @@
+{
+  "require":{
+    "clevertech/yii-booster": "~4.0.0"
+  }
+}

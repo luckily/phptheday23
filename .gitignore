@@ -1,0 +1,4 @@
+app/protected/runtime/*.*
+app/assets/*.*
+.DS_Store
+.idea/

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="PHPUnit" tests="1" assertions="1" failures="0" errors="0" time="9.501106">
+    <testsuite name="SiteTest" file="/Users/Apple/Sites/projects/phptheday23/app/protected/tests/functional/SiteTest.php" tests="1" assertions="1" failures="0" errors="0" time="9.501106">
+      <testsuite name="SiteTest: Chrome" tests="1" assertions="1" failures="0" errors="0" time="9.501106">
+        <testcase name="testIndex" class="SiteTest" file="/Users/Apple/Sites/projects/phptheday23/app/protected/tests/functional/SiteTest.php" line="5" assertions="1" time="9.501106"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
