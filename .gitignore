@@ -1,3 +1,5 @@
+app/protected/tests/logs/
+app/protected/tests/coverage/
 app/protected/runtime/*.*
 app/assets/*.*
 .DS_Store
