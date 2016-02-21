@@ -1,0 +1,25 @@
+<phpunit bootstrap="../../../app/protected/tests/bootstrap.php"
+		colors="false"
+		convertErrorsToExceptions="true"
+		convertNoticesToExceptions="true"
+		convertWarningsToExceptions="true"
+		stopOnFailure="false">
+
+	<selenium>
+		<browser name="Chrome" browser="*chrome" />
+	</selenium>
+
+	<testsuite name="PHPUnit">
+		<!--<directory suffix="Test.php">./functional</directory>-->
+		<directory suffix="Test.php">./unit</directory>
+	</testsuite>
+
+	<logging>
+		<log type="coverage-html" target="coverage"/>
+		<log type="coverage-clover" target="logs/clover.xml"/>
+		<log type="coverage-crap4j" target="logs/crap4j.xml"/>
+		<log type="coverage-xml" target="logs/coverage"/>
+		<log type="junit" target="logs/junit.xml"/>
+	</logging>
+
+</phpunit>
