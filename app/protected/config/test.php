@@ -9,7 +9,7 @@ return CMap::mergeArray(
 			),
 
 			'db'=>array(
-				'connectionString' => 'sqlite:protected/data/product-test.db',
+				'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/product-test.db',
 			),
 		),
 	)

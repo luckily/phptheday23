@@ -20,8 +20,6 @@ return array(
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
-		'application.models.entities.*',
-		'application.models.repositories.*',
 		'application.components.*',
 		'application.components.widgets.*',
 	),
@@ -73,7 +71,8 @@ return array(
 		// database settings are configured in database.php
 		// 'db'=>require(dirname(__FILE__).'/database.php'),
 		'db' => array(
-			'connectionString' => 'sqlite:protected/data/product-test.db',
+			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/product.db',
+			'tablePrefix' => 'tbl_',
 		),
 
 		'errorHandler'=>array(

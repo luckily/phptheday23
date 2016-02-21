@@ -6,7 +6,7 @@
  * The followings are the available columns in table 'products':
  * @property integer $id
  * @property string $name
- * @property integer $type
+ * @property integer $category
  * @property integer $price
  * @property integer $status
  */
@@ -15,24 +15,24 @@ class Product extends CActiveRecord
 	const OFFLINE = 0;
 	const ONLINE = 1;
 
-	const TYPE_PHONE = 1;
-	const TYPE_PAD = 2;
-	const TYPE_NOTEBOOK = 3;
+	const CATEGORY_PHONE = 1;
+	const CATEGORY_PAD = 2;
+	const CATEGORY_NOTEBOOK = 3;
 
 	public function tableName()
 	{
-		return 'products';
+		return '{{product}}';
 	}
 
 	public function rules()
 	{
 		return array(
-			array('name, type, status, price', 'required', 'message' => '{attribute} 必填'),
-			array('type, price, status', 'numerical', 'integerOnly'=>true),
+			array('name, category, status, price', 'required', 'message' => '{attribute} 必填'),
+			array('category, price, status', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, type, price, status', 'safe', 'on'=>'search'),
+			array('id, name, category, price, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,7 +47,7 @@ class Product extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => '產品名稱',
-			'type' => '類型',
+			'category' => '類型',
 			'price' => '價格',
 			'status' => '狀態',
 		);
@@ -61,7 +61,7 @@ class Product extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('type',$this->type);
+		$criteria->compare('category',$this->category);
 		$criteria->compare('price',$this->price);
 		$criteria->compare('status',$this->status);
 
@@ -83,12 +83,12 @@ class Product extends CActiveRecord
 		);
 	}
 
-	public function getTypeOptions()
+	public function getCategoryOptions()
 	{
 		return array(
-			(string)self::TYPE_PHONE 	=> '手機',
-			(string)self::TYPE_PAD  	=> '平板',
-			(string)self::TYPE_NOTEBOOK => '筆電',
+			(string)self::CATEGORY_PHONE 	=> '手機',
+			(string)self::CATEGORY_PAD  	=> '平板',
+			(string)self::CATEGORY_NOTEBOOK => '筆電',
 		);
 	}
 
@@ -103,17 +103,22 @@ class Product extends CActiveRecord
 		throw new Exception('undefined this product status.');
 	}
 
-	public function getTypeText()
+	public function getCategoryText()
 	{
-		if($this->status == self::TYPE_PHONE)
+		if($this->status == self::CATEGORY_PHONE)
 			return '手機';
 
-		if($this->status == self::TYPE_PAD)
+		if($this->status == self::CATEGORY_PAD)
 			return '平板';
 
-		if($this->status == self::TYPE_NOTEBOOK)
+		if($this->status == self::CATEGORY_NOTEBOOK)
 			return '筆電';
 
-		throw new Exception('undefined this product type.');
+		throw new Exception('undefined this product category.');
+	}
+
+	public function getHalfPrice()
+	{
+		return floor($this->price * 0.5);
 	}
 }
