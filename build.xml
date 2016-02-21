@@ -28,7 +28,8 @@
     <target name="phploc" description="Measure project size using PHPLOC">
         <exec executable="${basedir}/build/tools/phploc.phar" taskname="phploc">
             <arg value="--count-tests"/>
-            <arg path="${basedir}/app/protected"/>
+            <arg path="${basedir}/app/protected/controllers"/>
+            <arg path="${basedir}/app/protected/models"/>
         </exec>
     </target>
 
@@ -40,7 +41,8 @@
             <arg path="${basedir}/build/logs/phploc.csv"/>
             <arg value="--log-xml"/>
             <arg path="${basedir}/build/logs/phploc.xml"/>
-            <arg path="${basedir}/app/protected"/>
+            <arg path="${basedir}/app/protected/controllers"/>
+            <arg path="${basedir}/app/protected/models"/>
         </exec>
     </target>
 
@@ -50,7 +52,8 @@
             <arg value="--standard=PSR2"/>
             <arg value="--extensions=php"/>
             <arg value="--ignore=autoload.php"/>
-            <arg path="${basedir}/app/protected"/>
+            <arg path="${basedir}/app/protected/controllers"/>
+            <arg path="${basedir}/app/protected/models"/>
         </exec>
     </target>
 
@@ -62,7 +65,8 @@
             <arg value="--standard=PSR2"/>
             <arg value="--extensions=php"/>
             <arg value="--ignore=autoload.php"/>
-            <arg path="${basedir}/app/protected"/>
+            <arg path="${basedir}/app/protected/controllers"/>
+            <arg path="${basedir}/app/protected/models"/>
         </exec>
     </target>
 
