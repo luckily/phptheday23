@@ -18,7 +18,7 @@ Yii::app()->clientScript->registerScript('search', "
 	");
 ?>
 
-<h1>Products</h1>
+<h1>產品列表</h1>
 
 <div class="btn-group-vertical pull-right">
 	<a class="btn btn-primary" style="color:#FFFFFF;" href="<?= $this->createUrl('/product/create/'); ?>">

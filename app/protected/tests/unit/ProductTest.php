@@ -105,4 +105,10 @@ class ProductTest extends CDbTestCase
         $this->assertTrue($isSave);
         $this->assertEquals($expected, $product->getHalfPrice());
     }
+
+    public function tearDown()
+    {
+        // var_dump(Yii::app()->db->createCommand()->select('id, name')->from('tbl_product')->queryAll());
+        $this->getFixtureManager()->truncateTable('tbl_product');
+    }
 }
