@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Money" default="build">
+
+    <property name="apptarfile" value="phptheday23.tar.gz" />
+
+    <fileset id="phptheday23.tar.gz" dir=".">
+        <include name="app/**"/>
+        <include name="yii/**"/>
+    </fileset>
+
     <target name="build" depends="prepare,lint,phploc-ci,phpcs-ci,phpunit,-check-failure"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
@@ -87,4 +95,13 @@
             </condition>
         </fail>
     </target>
+
+    <target name="tar" depends="phpunit" description="Create tar file for release">
+        <delete file="${apptarfile}" failonerror="false"/>
+        <tar destfile="${apptarfile}" compression="gzip">
+            <!-- refid會參照上面設定的fileset -->
+            <fileset refid="phptheday23.tar.gz"/>
+        </tar>
+    </target>
+
 </project>
