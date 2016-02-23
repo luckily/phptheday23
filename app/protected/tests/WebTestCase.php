@@ -15,7 +15,7 @@ class WebTestCase extends CTestCase
 	 */
 	protected $driver;
 
-	protected $seleniumHost = 'ec2-54-179-153-227.ap-southeast-1.compute.amazonaws.com:4444/wd/hub';
+	protected $seleniumHost = 'http://ec2-54-179-153-227.ap-southeast-1.compute.amazonaws.com:4444/wd/hub';
 	// http://localhost:4444/wd/hub
 
 	protected $timeout = 15;
