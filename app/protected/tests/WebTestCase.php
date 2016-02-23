@@ -15,8 +15,8 @@ class WebTestCase extends CTestCase
 	 */
 	protected $driver;
 
-	protected $seleniumHost = 'http://ec2-54-179-153-227.ap-southeast-1.compute.amazonaws.com:4444/wd/hub';
-//	protected $seleniumHost = 'http://localhost:4444/wd/hub';
+//	protected $seleniumHost = 'http://ec2-54-179-153-227.ap-southeast-1.compute.amazonaws.com:4444/wd/hub';
+	protected $seleniumHost = 'http://localhost:4444/wd/hub';
 
 	protected $timeout = 15;
 
@@ -27,13 +27,20 @@ class WebTestCase extends CTestCase
 	 * means an AR class, while ':Post' means a table name).
 	 * Defaults to false, meaning fixtures will not be used at all.
 	 */
-	protected $fixtures = false;
+//	protected $fixtures = false;
+	public $fixtures=array(
+		'products'=>'Product',
+	);
 
 	/**
 	 * 每次執行測試時，都會執行的method
 	 */
 	protected function setUp()
 	{
+		if(is_array($this->fixtures)) {
+			$this->getFixtureManager()->load($this->fixtures);
+		}
+
 		/**
 		 * 可以設定你要使用哪一種瀏覽器
 		 * android, firefox, internetExplorer, safari ... etc
@@ -45,9 +52,6 @@ class WebTestCase extends CTestCase
 		 * 最長timeout時間
 		 */
 		$this->driver->manage()->timeouts()->implicitlyWait($this->timeout);
-
-		if(is_array($this->fixtures))
-			$this->getFixtureManager()->load($this->fixtures);
 	}
 
 	/**
@@ -83,7 +87,7 @@ class WebTestCase extends CTestCase
 		}
 
 		do {
-			sleep(5);
+			sleep(3);
 		} while ($driver->executeScript($code));
 	}
 
