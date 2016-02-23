@@ -14,48 +14,48 @@ class ProductControllerTest extends WebTestCase
         'products'=>'Product',
     );
 
-    public function test_index()
-    {
-//        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
-        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
-
-        $h1Text = $this->driver->findElement(WebDriverBy::cssSelector('h1'))->getText();
-        $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
-
-        $this->assertEquals('產品列表', $h1Text);
-        $this->assertCount(3, $items);
-    }
+//    public function test_index()
+//    {
+////        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
+//        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
+//
+//        $h1Text = $this->driver->findElement(WebDriverBy::cssSelector('h1'))->getText();
+//        $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
+//
+//        $this->assertEquals('產品列表', $h1Text);
+//        $this->assertCount(3, $items);
+//    }
 
     /**
      * 測試首頁搜尋
      */
-    public function test_search()
-    {
-//        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
-        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
-
-        $searchTextBox = $this->driver->findElement(WebDriverBy::id('Product_name'));
-        $searchTextBox->click();
-
-        sleep(1);
-
-        $this->driver->getKeyboard()->sendKeys('Sony')->pressKey(WebDriverKeys::ENTER);
-
-        /**
-         * 等ajax一下
-         */
-        $this->waitForAjax($this->driver);
-
-        sleep(1);
-
-        $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
-        $html = $items[0]->getText().'|'.$items[1]->getText();
-
-        // 搜尋Sony的東西之後不能出現ASUS的東西
-        $this->assertCount(2, $items);
-        $this->assertNotContains('ASUS', $html);
-
-    }
+//    public function test_search()
+//    {
+////        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
+//        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
+//
+//        $searchTextBox = $this->driver->findElement(WebDriverBy::id('Product_name'));
+//        $searchTextBox->click();
+//
+//        sleep(1);
+//
+//        $this->driver->getKeyboard()->sendKeys('Sony')->pressKey(WebDriverKeys::ENTER);
+//
+//        /**
+//         * 等ajax一下
+//         */
+//        $this->waitForAjax($this->driver);
+//
+//        sleep(1);
+//
+//        $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
+//        $html = $items[0]->getText().'|'.$items[1]->getText();
+//
+//        // 搜尋Sony的東西之後不能出現ASUS的東西
+//        $this->assertCount(2, $items);
+//        $this->assertNotContains('ASUS', $html);
+//
+//    }
 
     /**
      * 測試建立產品
@@ -126,34 +126,34 @@ class ProductControllerTest extends WebTestCase
     /**
      * 選取ASUS的產品並刪除之
      */
-    public function test_delete()
-    {
-//        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
-        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
-
-        sleep(1);
-
-        $deleteTarget = $this->driver->findElement(WebDriverBy::xpath("//table/tbody/tr[2]/td[@class='button-column']/a[@class='delete']"));
-        $deleteTarget->click();
-
-        $this->driver->wait()->until(WebDriverExpectedCondition::alertIsPresent(), '等待確認的alert...');
-
-        sleep(1);
-
-        $this->driver->switchTo()->alert()->accept();
-
-        /**
-         * 等ajax一下
-         */
-        $this->waitForAjax($this->driver);
-
-        sleep(1);
-
-        $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
-        $html = $items[0]->getText().'|'.$items[1]->getText();
-
-        // 刪除ASUS的東西之後，不能又出現ASUS的東西
-        $this->assertCount(2, $items);
-        $this->assertNotContains('ASUS', $html);
-    }
+//    public function test_delete()
+//    {
+////        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
+//        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
+//
+//        sleep(1);
+//
+//        $deleteTarget = $this->driver->findElement(WebDriverBy::xpath("//table/tbody/tr[2]/td[@class='button-column']/a[@class='delete']"));
+//        $deleteTarget->click();
+//
+//        $this->driver->wait()->until(WebDriverExpectedCondition::alertIsPresent(), '等待確認的alert...');
+//
+//        sleep(1);
+//
+//        $this->driver->switchTo()->alert()->accept();
+//
+//        /**
+//         * 等ajax一下
+//         */
+//        $this->waitForAjax($this->driver);
+//
+//        sleep(1);
+//
+//        $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
+//        $html = $items[0]->getText().'|'.$items[1]->getText();
+//
+//        // 刪除ASUS的東西之後，不能又出現ASUS的東西
+//        $this->assertCount(2, $items);
+//        $this->assertNotContains('ASUS', $html);
+//    }
 }
