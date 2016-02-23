@@ -59,7 +59,7 @@ class WebTestCase extends CTestCase
 		sleep(3);
 
 		$this->driver->close();
-		sleep(3);
+		sleep(30);
 	}
 
 	/**
