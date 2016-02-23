@@ -100,6 +100,8 @@ class ProductControllerTest extends WebTestCase
         $this->assertEquals('29899', $priceTextBox->getAttribute('value'));
         $this->assertTrue($this->driver->findElement(WebDriverBy::xpath("//select[@id='Product_category']/option[text()='手機']"))->isSelected());
         $this->assertTrue($this->driver->findElement(WebDriverBy::xpath("//select[@id='Product_status']/option[text()='上架中']"))->isSelected());
+
+        $this->getFixtureManager()->truncateTable('tbl_product');
     }
 
     /**
