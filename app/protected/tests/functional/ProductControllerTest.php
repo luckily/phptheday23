@@ -14,17 +14,17 @@ class ProductControllerTest extends WebTestCase
         'products'=>'Product',
     );
 
-//    public function test_index()
-//    {
-////        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
-//        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
-//
-//        $h1Text = $this->driver->findElement(WebDriverBy::cssSelector('h1'))->getText();
-//        $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
-//
-//        $this->assertEquals('產品列表', $h1Text);
-//        $this->assertCount(3, $items);
-//    }
+    public function test_index()
+    {
+//        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
+        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
+
+        $h1Text = $this->driver->findElement(WebDriverBy::cssSelector('h1'))->getText();
+        $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
+
+        $this->assertEquals('產品列表', $h1Text);
+        $this->assertCount(3, $items);
+    }
 
     /**
      * 測試首頁搜尋
