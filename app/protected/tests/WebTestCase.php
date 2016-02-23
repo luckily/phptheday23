@@ -38,7 +38,7 @@ class WebTestCase extends CTestCase
 		 * 可以設定你要使用哪一種瀏覽器
 		 * android, firefox, internetExplorer, safari ... etc
 		 */
-		$capabilities = DesiredCapabilities::chrome();
+		$capabilities = DesiredCapabilities::firefox();
 		$this->driver = RemoteWebDriver::create($this->seleniumHost, $capabilities);
 
 		/**
@@ -59,7 +59,7 @@ class WebTestCase extends CTestCase
 		sleep(3);
 
 		$this->driver->close();
-		sleep(30);
+		sleep(60);
 	}
 
 	/**
