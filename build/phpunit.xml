@@ -11,7 +11,7 @@
 
 	<testsuite name="PHPUnit">
 		<directory suffix="Test.php">../app/protected/tests/unit</directory>
-		<directory suffix="Test.php">../app/protected/tests/functional</directory>
+		<!--<directory suffix="Test.php">../app/protected/tests/functional</directory>-->
 	</testsuite>
 
 	<logging>
