@@ -5,13 +5,10 @@
 		convertWarningsToExceptions="true"
 		stopOnFailure="false">
 
-	<selenium>
-		<browser name="Chrome" browser="*chrome" />
-	</selenium>
-
 	<testsuite name="PHPUnit">
 		<directory suffix="Test.php">../app/protected/tests/unit</directory>
 		<directory suffix="Test.php">../app/protected/tests/functional</directory>
+		<!--<directory suffix="Test.php">../app/protected/tests/controllers</directory>-->
 	</testsuite>
 
 	<logging>
@@ -21,5 +18,4 @@
 		<log type="coverage-xml" target="logs/coverage"/>
 		<log type="junit" target="logs/junit.xml"/>
 	</logging>
-
 </phpunit>

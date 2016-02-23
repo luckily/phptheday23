@@ -16,7 +16,7 @@ class WebTestCase extends CTestCase
 	protected $driver;
 
 	protected $seleniumHost = 'http://ec2-54-179-153-227.ap-southeast-1.compute.amazonaws.com:4444/wd/hub';
-	// http://localhost:4444/wd/hub
+//	protected $seleniumHost = 'http://localhost:4444/wd/hub';
 
 	protected $timeout = 15;
 
@@ -38,7 +38,7 @@ class WebTestCase extends CTestCase
 		 * 可以設定你要使用哪一種瀏覽器
 		 * android, firefox, internetExplorer, safari ... etc
 		 */
-		$capabilities = DesiredCapabilities::firefox();
+		$capabilities = DesiredCapabilities::chrome();
 		$this->driver = RemoteWebDriver::create($this->seleniumHost, $capabilities);
 
 		/**
@@ -59,7 +59,7 @@ class WebTestCase extends CTestCase
 		sleep(3);
 
 		$this->driver->close();
-		sleep(60);
+		sleep(3);
 	}
 
 	/**

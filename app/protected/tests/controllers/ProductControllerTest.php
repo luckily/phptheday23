@@ -1,5 +1,7 @@
 <?php
 
+require_once 'WebTestDriver.php';
+
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverKeys;
 use Facebook\WebDriver\WebDriverExpectedCondition;
@@ -8,7 +10,7 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
  * Class ProductControllerTest
  * @link http://codeception.com/11-12-2013/working-with-phpunit-and-selenium-webdriver.html#.VstVVnR94fE
  */
-class ProductControllerTest extends WebTestCase
+class ProductControllerTest extends WebTestDriver
 {
     public $fixtures=array(
         'products'=>'Product',
@@ -16,8 +18,7 @@ class ProductControllerTest extends WebTestCase
 
     public function test_index()
     {
-//        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
-        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
+        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
 
         $h1Text = $this->driver->findElement(WebDriverBy::cssSelector('h1'))->getText();
         $items  = $this->driver->findElements(WebDriverBy::cssSelector('#product-grid table tbody tr'));
@@ -31,8 +32,7 @@ class ProductControllerTest extends WebTestCase
      */
     public function test_search()
     {
-//        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
-        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
+        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
 
         $searchTextBox = $this->driver->findElement(WebDriverBy::id('Product_name'));
         $searchTextBox->click();
@@ -58,8 +58,7 @@ class ProductControllerTest extends WebTestCase
      */
     public function test_create()
     {
-//        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/create');
-        $this->driver->get('http://localhost/app/index-test.php?r=product/create');
+        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/create');
 
         $submitButton = $this->driver->findElement(WebDriverBy::cssSelector('#yw0'));
         $submitButton->click();
@@ -112,8 +111,7 @@ class ProductControllerTest extends WebTestCase
      */
     public function test_delete()
     {
-//        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
-        $this->driver->get('http://localhost/app/index-test.php?r=product/index');
+        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/index');
 
         $deleteTarget = $this->driver->findElement(WebDriverBy::xpath("//table/tbody/tr[2]/td[@class='button-column']/a[@class='delete']"));
         $deleteTarget->click();
