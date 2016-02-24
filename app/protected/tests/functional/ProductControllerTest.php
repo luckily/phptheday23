@@ -63,7 +63,7 @@ class ProductControllerTest extends WebTestCase
     public function test_create()
     {
 //        $this->driver->get('http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php?r=product/create');
-        $this->driver->get('http://http://ec2-54-179-159-17.ap-southeast-1.compute.amazonaws.com/app/index-test.php?r=product/create');
+        $this->driver->get('http://localhost/app/index-test.php?r=product/create');
 
         $submitButton = $this->driver->findElement(WebDriverBy::cssSelector('#yw0'));
         $submitButton->click();
