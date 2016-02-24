@@ -8,9 +8,10 @@
 	<testsuite name="PHPUnit">
 		<directory suffix="Test.php">../app/protected/tests/unit</directory>
 		<directory suffix="Test.php">../app/protected/tests/functional</directory>
-		<!--<directory suffix="Test.php">../app/protected/tests/controllers</directory>-->
+		<!--<directory suffix="Test.php">../app/protected/tests/outside</directory>-->
 	</testsuite>
 
+	<!--log要先設定好對應的位置，這樣Jenkins才能抓到log做分析-->
 	<logging>
 		<log type="coverage-html" target="coverage"/>
 		<log type="coverage-clover" target="logs/clover.xml"/>

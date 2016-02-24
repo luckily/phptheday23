@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Money" default="build">
-
+    <!--build工作項依賴[prepare,lint,phploc-ci,phpcs-ci,phpunit,-check-failure]-->
+    <!--依賴的工作項如果都成功，build這個工作項才算成功-->
     <target name="build" depends="prepare,lint,phploc-ci,phpcs-ci,phpunit,-check-failure"/>
 
+    <!--執行清除log-->
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
         <delete dir="${basedir}/build/coverage"/>
         <delete dir="${basedir}/build/logs"/>
         <property name="clean.done" value="true"/>
     </target>
 
+    <!--執行準備事項-->
     <target name="prepare" unless="prepare.done" depends="clean" description="Prepare for build">
         <mkdir dir="${basedir}/build/coverage"/>
         <mkdir dir="${basedir}/build/logs"/>
         <property name="prepare.done" value="true"/>
     </target>
 
+    <!--從這邊開始，都是針對PHP程式碼做分析-->
     <target name="lint" depends="prepare">
         <apply executable="php" failonerror="true" taskname="lint">
             <arg value="-l"/>
@@ -71,6 +75,7 @@
         </exec>
     </target>
 
+    <!--執行phpunit test-->
     <target name="phpunit" depends="prepare" description="Run unit tests with PHPUnit">
         <exec executable="php" resultproperty="result.phpunit" taskname="phpunit">
             <arg path="${basedir}/build/tools/phpunit_facebook_webdriver.phar"/>
@@ -79,6 +84,7 @@
         </exec>
     </target>
 
+    <!--檢查是否錯誤-->
     <target name="-check-failure">
         <fail message="PHPUnit did not finish successfully">
             <condition>
@@ -89,7 +95,8 @@
         </fail>
     </target>
 
-
+    <!--從這邊開始都是佈署所需要的設定檔-->
+    <!--設定相關屬性-->
     <property name="apptarfile" value="phptheday23.tar.gz" />
 
     <fileset id="phptheday23.tar.gz" dir=".">
@@ -97,6 +104,7 @@
         <include name="yii/**"/>
     </fileset>
 
+    <!--這邊做的事情是，打包程式碼，以利遠端佈署使用-->
     <target name="tar" description="Create tar file for release">
         <delete file="${apptarfile}" failonerror="false"/>
         <tar destfile="${apptarfile}" compression="gzip">
@@ -104,5 +112,4 @@
             <fileset refid="phptheday23.tar.gz"/>
         </tar>
     </target>
-
 </project>
