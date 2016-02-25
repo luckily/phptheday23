@@ -82,7 +82,7 @@ class ProductTest extends CDbTestCase
             ),
         ));
 
-        $expected = '平板';
+        $expected = '平板123';
 
         // Assert 使用PHPUnit提供的assertion，測試期望值與實際值是否相等。
         $this->assertEquals($expected, $targetProduct->getCategoryText());
