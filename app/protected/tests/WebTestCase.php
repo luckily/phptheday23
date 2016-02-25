@@ -3,7 +3,7 @@
 Yii::import('system.test.CTestCase');
 
 //define('TEST_BASE_URL','http://localhost/~joel.zhong/projects/phptheday23/app/index-test.php');
-define('TEST_BASE_URL','http://localhost/app/index.php');
+define('TEST_BASE_URL','http://localhost/app/index-test.php');
 
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
@@ -15,7 +15,7 @@ class WebTestCase extends CTestCase
 	 */
 	protected $driver;
 
-	protected $seleniumHost = 'http://ec2-54-179-159-17.ap-southeast-1.compute.amazonaws.com:4444/wd/hub';
+	protected $seleniumHost = 'http://ec2-54-169-112-197.ap-southeast-1.compute.amazonaws.com:4444/wd/hub';
 //	protected $seleniumHost = 'http://localhost:4444/wd/hub';
 
 	protected $timeout = 15;

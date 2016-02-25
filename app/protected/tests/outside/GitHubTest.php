@@ -25,7 +25,7 @@ class GitHubTest extends WebTestCase
 
         $repositoryMeta = $this->driver->findElement(WebDriverBy::cssSelector('span.repository-meta-content'))->getText();
 
-        sleep(3);
+        sleep(1);
 
         $this->assertContains('Yii PHP Framework 1.1', $repositoryMeta);
     }
